@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Styling -->
-    <link rel="stylesheet" href="style.css?v=5.9.0">
+    <link rel="stylesheet" href="style.css?v=5.9.4">
 </head>
 <body>
     <!-- Background Glow Effect for Premium Aesthetics -->
@@ -91,6 +91,10 @@
                             <span class="stat-num">Drive</span>
                             <span class="stat-lbl">Bank Soal Google</span>
                         </div>
+                        <div class="stat-item live-pulse-container">
+                            <span class="stat-num" id="live-users-count">1</span>
+                            <span class="stat-lbl"><span class="pulse-dot"></span> Sedang Online</span>
+                        </div>
                     </div>
                 </div>
 
@@ -142,6 +146,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
 
         <!-- SECTION 3: SIMULASI KUIS -->
@@ -503,7 +508,10 @@
         </div>
     </footer>
 
+    <!-- MQTT Client for Real Realtime Sync -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.3.7/mqtt.min.js"></script>
+
     <!-- JavaScript Bundle -->
-    <script src="app.js?v=5.9.2"></script>
+    <script src="app.js?v=5.9.4"></script>
 </body>
 </html>

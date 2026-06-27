@@ -656,6 +656,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup Quiz Event Listeners
     initQuizListeners();
 
+    // Setup Live Presence & Visitor History (NEW)
+    initLivePresence();
+
     // Default Routing based on URL hash if any
     const hash = window.location.hash.substring(1);
     if (hash && ['home', 'kuis', 'soal-internet', 'tips'].includes(hash)) {
@@ -1364,6 +1367,8 @@ function submitQuiz() {
         console.error("Gagal menyimpan riwayat skor kuis", e);
     }
 
+
+
     // Render results view
     document.getElementById('res-score').textContent = finalScore;
     document.getElementById('res-correct').textContent = correctCount;
@@ -1567,3 +1572,142 @@ function switchMobileQuizTab(tabName) {
     }
 }
 window.switchMobileQuizTab = switchMobileQuizTab;
+
+// ==========================================================================
+// PURE REAL-TIME ACTIVE USERS COUNTER (SIMPLIFIED)
+// ==========================================================================
+
+const myPeerId = 'peer_' + Math.random().toString(36).substr(2, 9);
+let onlinePeers = {};
+let mqttClient = null;
+let isMqttConnected = false;
+let heartbeatTimer = null;
+let cleanupTimer = null;
+
+function isLocalhost() {
+    const hn = window.location.hostname;
+    return hn === 'localhost' || hn === '127.0.0.1' || window.location.protocol === 'file:';
+}
+
+function initLivePresence() {
+    connectToRealtimePresence();
+}
+
+function connectToRealtimePresence() {
+    if (typeof mqtt === 'undefined') {
+        console.warn("MQTT.js tidak terdeteksi.");
+        updateOnlineCountUI(1);
+        return;
+    }
+
+    console.log("Menghubungkan ke broker MQTT untuk sinkronisasi jumlah online...");
+    
+    // Fallback if MQTT is unreachable
+    let connectionTimeout = setTimeout(() => {
+        if (!isMqttConnected) {
+            console.warn("Koneksi MQTT timeout.");
+            updateOnlineCountUI(1);
+        }
+    }, 4500);
+
+    try {
+        const clientId = 'ayoppg_client_' + Math.random().toString(16).substr(2, 8);
+        
+        mqttClient = mqtt.connect('wss://broker.emqx.io:8084/mqtt', {
+            clientId: clientId,
+            connectTimeout: 4000,
+            keepalive: 60,
+            clean: true
+        });
+
+        mqttClient.on('connect', () => {
+            clearTimeout(connectionTimeout);
+            isMqttConnected = true;
+            console.log("Terhubung ke broker MQTT untuk hitungan online.");
+            
+            // Subscribe to presence channel
+            mqttClient.subscribe('ayoppg_presence_2026/presence');
+            
+            // Send initial heartbeat
+            sendHeartbeat();
+            
+            // Set heartbeat interval (every 8 seconds)
+            heartbeatTimer = setInterval(sendHeartbeat, 8000);
+            
+            // Set cleanup interval (every 5 seconds)
+            cleanupTimer = setInterval(checkOfflinePeers, 5000);
+        });
+
+        mqttClient.on('message', (topic, payload) => {
+            try {
+                const data = JSON.parse(payload.toString());
+                if (data.peerId === myPeerId) return;
+
+                if (topic === 'ayoppg_presence_2026/presence') {
+                    onlinePeers[data.peerId] = {
+                        lastSeen: Date.now()
+                    };
+                    updateOnlineCountUI(Object.keys(onlinePeers).length + 1);
+                }
+            } catch (err) {
+                // Ignore parsing errors
+            }
+        });
+
+        mqttClient.on('close', () => {
+            if (isMqttConnected) {
+                isMqttConnected = false;
+                console.warn("Koneksi MQTT terputus.");
+                clearInterval(heartbeatTimer);
+                clearInterval(cleanupTimer);
+                updateOnlineCountUI(1);
+            }
+        });
+
+    } catch (e) {
+        console.error("Gagal menginisialisasi MQTT:", e);
+        clearTimeout(connectionTimeout);
+        updateOnlineCountUI(1);
+    }
+}
+
+function sendHeartbeat() {
+    if (!isMqttConnected || !mqttClient) return;
+    const payload = {
+        peerId: myPeerId,
+        timestamp: Date.now()
+    };
+    mqttClient.publish('ayoppg_presence_2026/presence', JSON.stringify(payload));
+}
+
+function checkOfflinePeers() {
+    const now = Date.now();
+    let changed = false;
+    
+    for (const peerId in onlinePeers) {
+        // Remove peer if no heartbeat for 18 seconds
+        if (now - onlinePeers[peerId].lastSeen > 18000) {
+            delete onlinePeers[peerId];
+            changed = true;
+        }
+    }
+    
+    if (changed) {
+        updateOnlineCountUI(Object.keys(onlinePeers).length + 1);
+    }
+}
+
+function updateOnlineCountUI(count) {
+    const counterEl = document.getElementById('live-users-count');
+    if (!counterEl) return;
+    
+    counterEl.style.transform = 'scale(1.15)';
+    counterEl.style.color = 'var(--success)';
+    counterEl.style.transition = 'all 0.2s ease';
+    
+    setTimeout(() => {
+        counterEl.textContent = count;
+        counterEl.style.transform = 'scale(1)';
+        counterEl.style.color = '';
+    }, 200);
+}
