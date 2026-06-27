@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyoPPG - Portal Belajar & Panduan Pendaftaran PPG Prajabatan 2026</title>
+    <meta name="description" content="Persiapkan dirimu lolos seleksi PPG Prajabatan 2026 dengan latihan soal interaktif, pembahasan lengkap, checklist berkas administrasi, dan tips wawancara terpercaya.">
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Styling -->
+    <link rel="stylesheet" href="style.css?v=5.9.0">
+</head>
+<body>
+    <!-- Background Glow Effect for Premium Aesthetics -->
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="nav-logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">Ayo<span class="highlight">PPG</span></span>
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-target="home">Beranda</a></li>
+                    <li><a href="#kuis" class="nav-link" data-target="kuis">Simulasi CAT</a></li>
+                    <li><a href="#soal-internet" class="nav-link" data-target="soal-internet">Soal Internet</a></li>
+                    <li><a href="#tips" class="nav-link" data-target="tips">Tips & Drive</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay">
+        <div class="mobile-menu-content">
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Tutup Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#home" class="mobile-nav-link" data-target="home">Beranda</a></li>
+                    <li><a href="#kuis" class="mobile-nav-link" data-target="kuis">Simulasi CAT</a></li>
+                    <li><a href="#soal-internet" class="mobile-nav-link" data-target="soal-internet">Soal Internet</a></li>
+                    <li><a href="#tips" class="mobile-nav-link" data-target="tips">Tips & Drive</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        
+        <!-- SECTION 1: HOME (HERO) -->
+        <section id="home-section" class="content-section active-section">
+            <div class="container hero-container">
+                <div class="hero-text animate-fade-in">
+                    <div class="badge-new">✨ Info Seleksi CAT 2026</div>
+                    <h1>Simulasi CAT <span class="text-gradient">Pilihan Ganda Kompleks</span> AyoPPG</h1>
+                    <p class="hero-desc">Portal ini dirancang khusus untuk memberikan pengalaman nyata mengerjakan tipe soal **Pilihan Ganda Kompleks** (seperti pilihan ganda dengan banyak jawaban benar dan tabel pernyataan Benar/Salah) serta navigasi ujian resmi berbasis waktu. Berlatih di sini akan membantu membiasakan pola pikir taktis Anda sehingga **tidak kaget** saat menghadapi tes substantif sesungguhnya.</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" onclick="navigateToSection('kuis')">
+                            Mulai Simulasi CAT
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                        <button class="btn btn-secondary" onclick="navigateToSection('tips')">Tips & Strategi</button>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-num">30+</span>
+                            <span class="stat-lbl">Soal CAT Kompleks</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-lbl">Gratis Tanpa Biaya</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">Drive</span>
+                            <span class="stat-lbl">Bank Soal Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual animate-slide-up">
+                    <div class="visual-card main-visual">
+                        <div class="visual-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="header-title">AyoPPG Simulator</span>
+                        </div>
+                        <div class="visual-body">
+                            <div class="quiz-preview-item">
+                                <div class="preview-q" style="font-size:0.75rem; color:var(--primary); font-weight:700; margin-bottom:4px;">PILIHAN GANDA KOMPLEKS</div>
+                                <p style="font-size:0.8rem; font-weight:600; margin-bottom:8px; line-height:1.3;">Manakah yang merupakan sumber energi baru terbarukan? (Pilih lebih dari satu)</p>
+                                <div class="preview-options" style="display:flex; flex-direction:column; gap:6px;">
+                                    <div class="preview-opt active" style="font-size:0.75rem; padding:6px 10px; border-radius:4px; display:flex; align-items:center; gap:8px; background-color:var(--primary-light); color:var(--primary); border:1px solid var(--primary);"><span style="font-weight:bold;">A</span> [x] Energi Panas Bumi</div>
+                                    <div class="preview-opt" style="font-size:0.75rem; padding:6px 10px; border-radius:4px; display:flex; align-items:center; gap:8px; border:1px solid var(--border-card);"><span style="font-weight:bold;">B</span> [ ] Energi Batu Fosil</div>
+                                    <div class="preview-opt active" style="font-size:0.75rem; padding:6px 10px; border-radius:4px; display:flex; align-items:center; gap:8px; background-color:var(--primary-light); color:var(--primary); border:1px solid var(--primary);"><span style="font-weight:bold;">C</span> [x] Energi Surya (Matahari)</div>
+                                </div>
+                            </div>
+                            <div class="visual-floating-badge text-center">
+                                <span class="badge-title">Simulasi CAT</span>
+                                <span class="badge-value">Tipe Baru ⚡</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid Section -->
+            <div class="container features-container">
+                <div class="section-title text-center">
+                    <h2>Fitur Unggulan Simulator AyoPPG</h2>
+                    <p>Semua fasilitas belajar yang Anda butuhkan dikemas dalam satu dashboard interaktif.</p>
+                </div>
+                <div class="features-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
+                    <div class="glass-card feature-card interactive" onclick="navigateToSection('kuis')">
+                        <div class="feature-icon">📝</div>
+                        <h3>Simulasi Soal Kompleks</h3>
+                        <p>Melatih mental dan kesiapan dengan mengerjakan variasi soal pilihan ganda kompleks dan tabel benar/salah secara interaktif.</p>
+                        <span class="feature-link">Mulai Ujian &rarr;</span>
+                    </div>
+                    <div class="glass-card feature-card interactive" onclick="navigateToSection('tips')">
+                        <div class="feature-icon">💡</div>
+                        <h3>Tips & Trik</h3>
+                        <p>Rahasia menyusun esai yang lolos kurasi dan strategi lolos seleksi wawancara berbasis kompetensi.</p>
+                        <span class="feature-link">Baca Tips &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SIMULASI KUIS -->
+<section id="kuis-section" class="content-section">
+                    <div class="container">
+
+                        <div class="section-title">
+                            <span class="section-badge">Simulasi CAT</span>
+                            <h2>Simulasi CAT Pilihan Ganda Kompleks</h2>
+                            <p>Uji kemampuanmu mengerjakan tipe soal substantif (Literasi & Numerasi) dengan format CAT interaktif.</p>
+                        </div>
+
+                        <!-- Quiz Category Selection -->
+                        <div class="quiz-lobby" id="quiz-lobby">
+                            <div class="grid-3-col" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
+                                <div class="lobby-card">
+                                    <div class="lobby-icon">📖</div>
+                                    <h3>Tes Literasi</h3>
+                                    <p>Menguji kemampuan memahami, menganalisis, mengevaluasi informasi, dan logika berpikir melalui teks bacaan.</p>
+                                    <button class="btn btn-primary btn-block btn-start-quiz" data-category="literasi">Mulai Tes Literasi</button>
+                                </div>
+                                <div class="lobby-card">
+                                    <div class="lobby-icon">🧮</div>
+                                    <h3>Tes Numerasi</h3>
+                                    <p>Menguji konsep matematika dasar, pemecahan masalah kuantitatif, analisis data grafik/tabel, dan logika angka.</p>
+                                    <button class="btn btn-primary btn-block btn-start-quiz" data-category="numerasi">Mulai Tes Numerasi</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Active Area (Initially Hidden) -->
+                        <div class="quiz-container hidden" id="quiz-container">
+                            <div class="quiz-header-bar">
+                                <div class="quiz-info">
+                                    <span class="badge" id="quiz-category-badge">Literasi</span>
+                                    <span class="quiz-progress-text">Soal <span id="current-question-num">1</span> dari <span id="total-questions-num">5</span></span>
+                                </div>
+                                <div class="quiz-timer" id="quiz-timer-container">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span id="timer-display">10:00</span>
+                                </div>
+                            </div>
+
+                            <!-- Progress bar -->
+                            <div class="quiz-progress-track">
+                                <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 20%;"></div>
+                            </div>
+
+                            <!-- UTBK SNBT Split-screen Layout -->
+                            <div class="utbk-layout">
+                                <!-- Left/Main Stack: Passage + Question -->
+                                <div class="utbk-content-wrapper">
+                                    <!-- Left Pane: Reading Stimulus -->
+                                    <div class="utbk-passage-pane" id="utbk-passage-pane">
+                                        <!-- Generated Dynamically -->
+                                    </div>
+
+                                    <!-- Middle Pane: Question & Options -->
+                                    <div class="utbk-question-pane">
+                                        <div class="glass-card question-card" style="margin-bottom: 0;">
+                                            <div class="question-text" id="question-text">
+                                                Loading pertanyaan...
+                                            </div>
+                                            
+                                            <div class="options-container" id="options-container">
+                                                <!-- Options will be generated dynamically -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right Pane: Sidebar Question Navigator -->
+                                <div class="utbk-sidebar">
+                                    <div class="utbk-sidebar-header">
+                                        <h4>Navigasi Soal</h4>
+                                    </div>
+                                    <div class="utbk-grid" id="utbk-question-grid">
+                                        <!-- Grid items will be generated dynamically -->
+                                    </div>
+                                    <div class="utbk-legend">
+                                        <div class="legend-item"><span class="legend-dot status-answered"></span> Sudah Dijawab</div>
+                                        <div class="legend-item"><span class="legend-dot status-unanswered"></span> Belum Dijawab</div>
+                                        <div class="legend-item"><span class="legend-dot status-doubtful"></span> Ragu-Ragu</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quiz Navigation Controls -->
+                            <div class="quiz-controls">
+                                <button class="btn btn-secondary" id="btn-prev" disabled>&larr; Sebelumnya</button>
+                                
+                                <!-- Ragu-ragu option in the middle -->
+                                <label class="btn btn-secondary btn-doubtful-wrapper" id="btn-doubtful-wrapper" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="chk-doubtful" style="cursor: pointer; width: 18px; height: 18px;">
+                                    <span style="font-weight: 600;">Ragu-Ragu</span>
+                                </label>
+                                
+                                <div class="right-controls" style="display: flex; gap: 12px;">
+                                    <button class="btn btn-primary" id="btn-next">Selanjutnya &rarr;</button>
+                                    <button class="btn btn-success hidden" id="btn-submit">Selesai & Kirim</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Result Screen (Initially Hidden) -->
+                        <div class="quiz-results hidden" id="quiz-results">
+                            <div class="glass-card text-center results-summary-card">
+                                <div class="result-celebration">🏆</div>
+                                <h2>Simulasi Selesai!</h2>
+                                <p>Berikut adalah rincian hasil pengerjaan simulasi ujian substantif kamu:</p>
+                                
+                                <div class="results-stats-grid">
+                                    <div class="res-stat-card">
+                                        <span class="res-stat-num" id="res-score">80</span>
+                                        <span class="res-stat-lbl">Skor Akhir</span>
+                                    </div>
+                                    <div class="res-stat-card">
+                                        <span class="res-stat-num text-success" id="res-correct">4</span>
+                                        <span class="res-stat-lbl">Jawaban Benar</span>
+                                    </div>
+                                    <div class="res-stat-card">
+                                        <span class="res-stat-num text-danger" id="res-wrong">1</span>
+                                        <span class="res-stat-lbl">Jawaban Salah</span>
+                                    </div>
+                                </div>
+
+                                <div class="results-action-buttons">
+                                    <button class="btn btn-primary" id="btn-restart-quiz">Coba Lagi</button>
+                                    <button class="btn btn-secondary" id="btn-lobby-quiz">Kembali ke Menu</button>
+                                </div>
+                            </div>
+
+                            <!-- Detailed Explanation Review Section -->
+                            <div class="review-section">
+                                <h3>Pembahasan Soal</h3>
+                                <p class="review-desc">Pelajari kembali kesalahan dan pembahasannya di bawah ini untuk persiapan yang lebih matang.</p>
+                                <div class="review-list" id="review-list">
+                                    <!-- Dynamically generated list of review questions -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</section>
+
+        <!-- SECTION: SOAL INTERNET -->
+        <section id="soal-internet-section" class="content-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="section-badge">Bank Soal Eksternal</span>
+                    <h2>Contoh Soal dari Internet (Rekomendasi - Mirip Seleksi 2025)</h2>
+                    <p>Daftar dokumen latihan soal, try out, dan e-book dari internet yang memiliki pola dan tingkat kesulitan yang menyerupai soal asli seleksi substantif tahun 2025.</p>
+                </div>
+
+                <div class="grid-2-col referensi-grid">
+                    <!-- Card 1: E-Book Substantif Literasi & Numerasi -->
+                    <div class="glass-card ref-card" style="border-left: 4px solid #009ce6;">
+                        <div class="ref-header">
+                            <div class="ref-badge-wrapper">
+                                <span class="ref-emoji">📖</span>
+                                <span class="badge" style="background-color: rgba(0, 156, 230, 0.1); color: #009ce6;">FlipHTML5</span>
+                            </div>
+                            <h3>E-Book Substantif Literasi & Numerasi</h3>
+                        </div>
+                        <div class="ref-body">
+                            <p>E-book interaktif yang merangkum soal-soal latihan kemampuan numerasi dasar dan analisis bacaan literasi dengan format pembahasan taktis.</p>
+                            <a href="https://fliphtml5.com/wxqqh/szhy/E_BOOK_PPG_SUBSTANTIF_LITERASI_NUMERASI_/" target="_blank" class="btn btn-primary btn-block">
+                                Buka E-Book (FlipHTML5)
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: E-Book Sukses PPG Prajabatan PGSD -->
+                    <div class="glass-card ref-card" style="border-left: 4px solid #009ce6;">
+                        <div class="ref-header">
+                            <div class="ref-badge-wrapper">
+                                <span class="ref-emoji">📕</span>
+                                <span class="badge" style="background-color: rgba(0, 156, 230, 0.1); color: #009ce6;">FlipHTML5</span>
+                            </div>
+                            <h3>E-Book Sukses PPG Prajabatan PGSD</h3>
+                        </div>
+                        <div class="ref-body">
+                            <p>Kumpulan materi dan contoh soal khusus untuk guru SD (PGSD) yang mencakup literasi, numerasi, dan pengantar kompetensi dasar substantif.</p>
+                            <a href="https://fliphtml5.com/tzfwb/aaex/E-BOOK_SUKSES_PPG_PRAJABATAN_PGSD_/5/" target="_blank" class="btn btn-primary btn-block">
+                                Buka E-Book (FlipHTML5)
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: E-Book Literasi Numerasi 2024 -->
+                    <div class="glass-card ref-card" style="border-left: 4px solid #f59e0b;">
+                        <div class="ref-header">
+                            <div class="ref-badge-wrapper">
+                                <span class="ref-emoji">📄</span>
+                                <span class="badge" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b;">Scribd</span>
+                            </div>
+                            <h3>E-Book Literasi Numerasi 2024</h3>
+                        </div>
+                        <div class="ref-body">
+                            <p>Dokumen bank soal literasi numerasi lengkap dengan pola kasus yang berbobot tinggi, sangat relevan untuk menyusun logika pengerjaan cepat.</p>
+                            <a href="https://www.scribd.com/document/774380472/E-book-Literasi-Numerasi-2024" target="_blank" class="btn btn-secondary btn-block">
+                                Buka Dokumen (Scribd)
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Try Out PTS 12 - Lingkaran -->
+                    <div class="glass-card ref-card" style="border-left: 4px solid #f59e0b;">
+                        <div class="ref-header">
+                            <div class="ref-badge-wrapper">
+                                <span class="ref-emoji">📐</span>
+                                <span class="badge" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b;">Scribd</span>
+                            </div>
+                            <h3>Latihan Soal & Try Out Lingkaran</h3>
+                        </div>
+                        <div class="ref-body">
+                            <p>Materi geometri lingkaran yang sering diujikan di seleksi numerasi substantif PPG Prajabatan untuk menguji logika perhitungan spasial.</p>
+                            <a href="https://www.scribd.com/document/811879703/Try-Out-PTS-12-Lingkaran" target="_blank" class="btn btn-secondary btn-block">
+                                Buka Dokumen (Scribd)
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Slideshare - Modul Numerasi 1-5 -->
+                    <div class="glass-card ref-card" style="border-left: 4px solid #10b981; grid-column: span 2;">
+                        <div class="ref-header">
+                            <div class="ref-badge-wrapper">
+                                <span class="ref-emoji">📊</span>
+                                <span class="badge" style="background-color: rgba(16, 185, 129, 0.1); color: #10b981;">Slideshare</span>
+                            </div>
+                            <h3>Slideshare Modul Numerasi 1-5 (PDF)</h3>
+                        </div>
+                        <div class="ref-body">
+                            <p>Modul pemecahan masalah numerik dan grafis berseri dari internet yang sangat mirip dengan tipe soal analisis tabel/diagram pada tes substantif.</p>
+                            <a href="https://www.slideshare.net/slideshow/numerasi-1-5pdf/256871468" target="_blank" class="btn btn-secondary btn-block">
+                                Buka Slideshow (Slideshare)
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TIPS & TRIK -->
+        <section id="tips-section" class="content-section">
+            <div class="container">
+                <div class="section-title">
+                    <span class="section-badge">Strategi & Bank Soal</span>
+                    <h2>Tips Sukses & Google Drive Alumni</h2>
+                    <p>Rangkuman tips taktis beserta link akses Google Drive bank soal, draf esai SIMPKB, dan kisi-kisi wawancara peninggalan alumni.</p>
+                </div>
+
+                <div class="tips-grid">
+                    <div class="glass-card tip-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="tip-header">
+                                <span class="tip-icon">🖋️</span>
+                                <h3>Kunci Menulis Esai SIMPKB</h3>
+                            </div>
+                            <div class="tip-body">
+                                <p>Esai pendaftaran bukan sekadar formalitas, melainkan seleksi administrasi terdalam. Asesor membaca esai ini secara mendalam.</p>
+                                <ul class="styled-list">
+                                    <li><strong>Metode STAR:</strong> Tulis deskripsi pengalamanmu menggunakan kerangka <em>Situation, Task, Action, Result</em>.</li>
+                                    <li><strong>Jangan Plagiat:</strong> Asesor menggunakan software pendeteksi plagiarisme dan kecerdasan buatan. Gunakan pengalaman nyata sendiri.</li>
+                                    <li><strong>Fokus pada Solusi:</strong> Ceritakan masalah pembelajaran yang pernah kamu hadapi dan tindakan solutif konkret apa yang telah kamu kerjakan.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-card);">
+                            <a href="https://drive.google.com/drive/folders/1pRinnsfuXo6em3qN8rxWaMHpN6VpR8H6?usp=sharing" target="_blank" class="btn btn-primary btn-block" style="font-size: 0.85rem; padding: 10px 14px; text-decoration: none;">
+                                📂 Draf Esai Alumni (Google Drive) &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card tip-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="tip-header">
+                                <span class="tip-icon">💻</span>
+                                <h3>Strategi Seleksi Substantif (CAT)</h3>
+                            </div>
+                            <div class="tip-body">
+                                <p>Tes substantif menguras konsentrasi karena waktu yang terbatas dengan bacaan teks literasi yang cukup panjang.</p>
+                                <ul class="styled-list">
+                                    <li><strong>Manajemen Waktu:</strong> Jangan terjebak terlalu lama pada satu soal yang sulit. Lewati dahulu dan kembali setelah soal lain selesai.</li>
+                                    <li><strong>Strategi Literasi:</strong> Baca pertanyaan terlebih dahulu sebelum membaca seluruh paragraf panjang. Ini memotong waktu membaca.</li>
+                                    <li><strong>Pedagogik Dasar:</strong> Pelajari Teori Belajar (Behavioristik, Kognitif, Konstruktivistik, Humanistik) dan model pembelajaran (PBL, PJBL, Inquiry).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-card);">
+                            <a href="https://drive.google.com/drive/folders/1TMn2uAgq9-6-AGNrVdHHFuBpvP-sKR_2?usp=sharing" target="_blank" class="btn btn-primary btn-block" style="font-size: 0.85rem; padding: 10px 14px; text-decoration: none; opacity: 0.85;">
+                                📂 Bank Soal (Dalam Pengembangan) &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card tip-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="tip-header">
+                                <span class="tip-icon">🗣️</span>
+                                <h3>Menghadapi Wawancara PPG</h3>
+                            </div>
+                            <div class="tip-body">
+                                <p>Wawancara PPG dirancang untuk menggali potensi kepribadian, ketahanan kerja, dan kompetensi sosialmu.</p>
+                                <ul class="styled-list">
+                                    <li><strong>Asesor Berbasis Kompetensi:</strong> Mereka akan menanyakan "kejadian nyata yang pernah kamu alami", bukan sekadar "teori apa yang kamu ketahui".</li>
+                                    <li><strong>Tunjukkan Growth Mindset:</strong> Tekankan kesediaanmu untuk terus belajar, dievaluasi, dan berkolaborasi dalam tim.</li>
+                                    <li><strong>Ketenangan & Kejujuran:</strong> Jawab dengan tenang, terstruktur, tidak terburu-buru, dan jujur berdasarkan pengalaman pribadimu.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-card);">
+                            <a href="https://drive.google.com/drive/folders/1qoBhEdghiOljdtiHC6P413p-jCALOS6T?usp=sharing" target="_blank" class="btn btn-primary btn-block" style="font-size: 0.85rem; padding: 10px 14px; text-decoration: none;">
+                                📂 PDF & Kisi-Kisi Wawancara (Google Drive) &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <a href="#" class="logo">
+                    <span class="logo-icon">🎓</span>
+                    <span class="logo-text">Ayo<span class="highlight">PPG</span></span>
+                </a>
+                <p>Platform belajar mandiri, latihan soal simulasi CAT substantif, dan informasi terlengkap bagi calon peserta PPG Prajabatan seluruh Indonesia.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#home" onclick="navigateToSection('home')">Beranda</a></li>
+                    <li><a href="#kuis" onclick="navigateToSection('kuis')">Simulasi CAT</a></li>
+                    <li><a href="#soal-internet" onclick="navigateToSection('soal-internet')">Soal Internet</a></li>
+                    <li><a href="#tips" onclick="navigateToSection('tips')">Tips & Drive</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-legal">
+                <p>&copy; 2026 AyoPPG. Dibuat dengan dedikasi untuk memajukan pendidikan guru Indonesia.</p>
+                <p class="disclaimer">Aplikasi ini bersifat independen dan ditujukan sebagai alat bantu belajar, tidak terafiliasi secara resmi dengan Kemendikbudristek.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Bundle -->
+    <script src="app.js?v=5.9.0"></script>
+</body>
+</html>
