@@ -1471,7 +1471,7 @@ function restartQuiz() {
     startQuiz(currentQuizState.category);
 }
 
-function showQuizLobby() {
+function showQuizLobbyLocal() {
     document.getElementById('quiz-results').classList.add('hidden');
     document.getElementById('quiz-container').classList.add('hidden');
     document.getElementById('quiz-lobby').classList.remove('hidden');
@@ -1512,7 +1512,7 @@ function switchQuizSubTab(subTabName) {
 }
 
 function showQuizLobbyGlobal() {
-    showQuizLobby();
+    showQuizLobbyLocal();
     switchQuizSubTab('simulasi');
     navigateToSection('kuis');
 }
