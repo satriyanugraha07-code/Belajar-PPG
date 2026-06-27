@@ -514,16 +514,16 @@ const quizData = {
         {
             type: "single",
             passage: PASSAGE_NUMERASI_3,
-            question: "Cocokkan jenis sayur dengan kelompok siswa pengelolanya berdasarkan narasi di atas:<br>1. Bayam, 2. Kangkung, 3. Sawi, 4. Selada<br>Kelompok: A. Kelas XI, B. Kelas X, C. Kelas XI, D. Kelas X.<br>Manakah kombinasi yang tepat?",
+            question: "Cocokkan jenis sayur dengan kelompok siswa pengelolanya berdasarkan narasi di atas:<br>1. Bayam, 2. Kangkung, 3. Sawi, 4. Selada<br>Kelompok: A. Kelas X, B. Kelas XI.<br>Manakah kombinasi yang tepat?",
             options: [
-                "1B, 2B, 3C, 4C",
-                "1B, 2B, 3C, 4A",
-                "1B, 2B, 3A, 4C",
                 "1A, 2A, 3B, 4B",
-                "1C, 2D, 3B, 4A"
+                "1A, 2B, 3A, 4B",
+                "1B, 2B, 3A, 4A",
+                "1B, 2A, 3B, 4A",
+                "1A, 2A, 3B, 4A"
             ],
-            correct: 1,
-            explanation: "Kelas X mengelola Bayam dan Kangkung (1B, 2B/2D), sedangkan Kelas XI mengelola Sawi dan Selada (3C, 4A). Kombinasi yang cocok adalah 1B, 2B, 3C, 4A."
+            correct: 0,
+            explanation: "Kelas X mengelola Bayam dan Kangkung (1A, 2A), sedangkan Kelas XI mengelola Sawi dan Selada (3B, 4B). Kombinasi yang cocok adalah 1A, 2A, 3B, 4B."
         },
         {
             type: "single",
@@ -740,7 +740,10 @@ function closeMobileMenu() {
 }
 
 function navigateToSection(sectionId) {
-    if (activeSectionId === sectionId) return;
+    if (activeSectionId === sectionId) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
 
     // Save previous section and stop quiz timer if leaving quiz section
     if (activeSectionId === 'kuis' && sectionId !== 'kuis') {
@@ -890,7 +893,7 @@ function initQuizListeners() {
     });
 
     document.getElementById('btn-restart-quiz').addEventListener('click', restartQuiz);
-    document.getElementById('btn-lobby-quiz').addEventListener('click', showQuizLobby);
+    document.getElementById('btn-lobby-quiz').addEventListener('click', showQuizLobbyGlobal);
 
     // Doubtful checkbox
     const chkDoubtful = document.getElementById('chk-doubtful');
