@@ -909,6 +909,19 @@ function initQuizListeners() {
             switchQuizSubTab(targetSub);
         });
     });
+
+    // Toggle sidebar on mobile
+    const sidebarHeader = document.querySelector('.utbk-sidebar-header');
+    if (sidebarHeader) {
+        sidebarHeader.addEventListener('click', () => {
+            if (window.innerWidth <= 992) {
+                const sidebar = document.querySelector('.utbk-sidebar');
+                if (sidebar) {
+                    sidebar.classList.toggle('collapsed');
+                }
+            }
+        });
+    }
 }
 
 function startQuiz(category) {
@@ -952,6 +965,16 @@ function startQuiz(category) {
     document.getElementById('quiz-results').classList.add('hidden');
     document.getElementById('quiz-container').classList.remove('hidden');
 
+    // Collapse sidebar on mobile initially
+    const sidebar = document.querySelector('.utbk-sidebar');
+    if (sidebar) {
+        if (window.innerWidth <= 992) {
+            sidebar.classList.add('collapsed');
+        } else {
+            sidebar.classList.remove('collapsed');
+        }
+    }
+
     // Load first question
     showQuestion(0);
 
@@ -989,10 +1012,16 @@ function showQuestion(index) {
         passagePane.innerHTML = q.passage;
         passagePane.style.display = 'block';
         if (layout) layout.classList.remove('no-passage');
+        if (typeof switchMobileQuizTab === 'function') {
+            switchMobileQuizTab('passage');
+        }
     } else {
         passagePane.innerHTML = '';
         passagePane.style.display = 'none';
         if (layout) layout.classList.add('no-passage');
+        if (typeof switchMobileQuizTab === 'function') {
+            switchMobileQuizTab('question');
+        }
     }
 
     // 2. Render Question Text (middle pane)
@@ -1517,3 +1546,24 @@ function showQuizLobbyGlobal() {
     navigateToSection('kuis');
 }
 window.showQuizLobby = showQuizLobbyGlobal;
+
+function switchMobileQuizTab(tabName) {
+    const layout = document.querySelector('.utbk-layout');
+    const tabPassage = document.getElementById('tab-btn-passage');
+    const tabQuestion = document.getElementById('tab-btn-question');
+    
+    if (!layout) return;
+    
+    if (tabName === 'passage') {
+        layout.classList.add('active-tab-passage');
+        layout.classList.remove('active-tab-question');
+        if (tabPassage) tabPassage.classList.add('active');
+        if (tabQuestion) tabQuestion.classList.remove('active');
+    } else {
+        layout.classList.add('active-tab-question');
+        layout.classList.remove('active-tab-passage');
+        if (tabPassage) tabPassage.classList.remove('active');
+        if (tabQuestion) tabQuestion.classList.add('active');
+    }
+}
+window.switchMobileQuizTab = switchMobileQuizTab;

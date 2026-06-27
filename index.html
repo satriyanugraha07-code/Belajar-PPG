@@ -192,6 +192,12 @@
 
                             <!-- UTBK SNBT Split-screen Layout -->
                             <div class="utbk-layout">
+                                <!-- Mobile Tabs for switching Passage and Question (Visible only on mobile) -->
+                                <div class="mobile-quiz-tabs" id="mobile-quiz-tabs">
+                                    <button class="mobile-quiz-tab active" id="tab-btn-passage" onclick="switchMobileQuizTab('passage')">📖 Bacaan</button>
+                                    <button class="mobile-quiz-tab" id="tab-btn-question" onclick="switchMobileQuizTab('question')">❓ Soal & Jawaban</button>
+                                </div>
+
                                 <!-- Left/Main Stack: Passage + Question -->
                                 <div class="utbk-content-wrapper">
                                     <!-- Left Pane: Reading Stimulus -->
@@ -498,6 +504,6 @@
     </footer>
 
     <!-- JavaScript Bundle -->
-    <script src="app.js?v=5.9.1"></script>
+    <script src="app.js?v=5.9.2"></script>
 </body>
 </html>
