@@ -898,6 +898,17 @@ function initQuizListeners() {
     document.getElementById('btn-restart-quiz').addEventListener('click', restartQuiz);
     document.getElementById('btn-lobby-quiz').addEventListener('click', showQuizLobbyGlobal);
 
+    const btnExitActiveQuiz = document.getElementById('btn-exit-active-quiz');
+    if (btnExitActiveQuiz) {
+        btnExitActiveQuiz.addEventListener('click', () => {
+            if (confirm("Apakah Anda yakin ingin keluar dari simulasi ujian? Kemajuan Anda saat ini akan hilang.")) {
+                stopQuizTimer();
+                document.body.classList.remove('quiz-mode-active');
+                showQuizLobbyGlobal();
+            }
+        });
+    }
+
     // Doubtful checkbox
     const chkDoubtful = document.getElementById('chk-doubtful');
     if (chkDoubtful) {

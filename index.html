@@ -184,9 +184,14 @@
                                     <span class="badge" id="quiz-category-badge">Literasi</span>
                                     <span class="quiz-progress-text">Soal <span id="current-question-num">1</span> dari <span id="total-questions-num">5</span></span>
                                 </div>
-                                <div class="quiz-timer" id="quiz-timer-container">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                    <span id="timer-display">10:00</span>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div class="quiz-timer" id="quiz-timer-container">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                        <span id="timer-display">10:00</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-sm" id="btn-exit-active-quiz" style="padding: 6px 12px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; border: 1px solid var(--border-card); background-color: var(--bg-card); color: var(--text-main); font-weight: 600; cursor: pointer; border-radius: 6px; transition: all 0.2s;">
+                                        🚪 Keluar
+                                    </button>
                                 </div>
                             </div>
 
