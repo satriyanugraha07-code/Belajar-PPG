@@ -31,7 +31,7 @@ export function renderDeveloperDashboard(analytics) {
         <form id="developer-login-form">
           <label for="developer-token">Token developer</label>
           <div class="developer-token-row">
-            <input id="developer-token" type="password" placeholder="tahubulat" autocomplete="off" />
+            <input id="developer-token" type="password" placeholder="Masukkan token" autocomplete="off" />
             <button type="submit">Unlock</button>
           </div>
           <p class="developer-error" id="developer-error"></p>

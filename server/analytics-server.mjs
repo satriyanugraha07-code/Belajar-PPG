@@ -14,7 +14,8 @@ const dataFile = path.join(dataDir, 'visits.json')
 const distDir = path.join(projectRoot, 'dist')
 
 const PORT = Number(process.env.PORT || 4100)
-const DEV_TOKEN = process.env.DEV_TOKEN || 'tahubulat'
+const DEV_TOKEN =
+  process.env.DEV_TOKEN || (process.env.NODE_ENV === 'production' ? '' : 'dev-mode-local')
 const IP_SALT = process.env.IP_SALT || 'ayoppg-visitors'
 const MAX_HISTORY = 5000
 const ACTIVE_TIMEOUT_MS = 45_000
@@ -107,7 +108,7 @@ setInterval(() => {
 
 server.listen(PORT, () => {
   console.log(`AyoPPG analytics server: http://127.0.0.1:${PORT}`)
-  console.log(`Developer token: ${DEV_TOKEN}`)
+  console.log(`Developer access: ${DEV_TOKEN ? 'configured' : 'not configured'}`)
 })
 
 function readVisits() {

@@ -12,6 +12,6 @@ services:
       - key: NODE_VERSION
         value: 22.22.0
       - key: DEV_TOKEN
-        value: tahubulat
+        sync: false
       - key: IP_SALT
         generateValue: true
