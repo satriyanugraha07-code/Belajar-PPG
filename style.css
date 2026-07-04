@@ -1495,7 +1495,8 @@ body.quiz-mode-active .glow-bg {
 }
 
 .utbk-question-pane .question-text {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
+    flex-shrink: 0;
     max-height: none;
     min-height: 0;
     overflow-y: visible;
@@ -2057,7 +2058,20 @@ body.quiz-mode-active .glow-bg {
         min-height: 0;
         overflow: visible;
         padding: 12px 12px !important;
-        gap: 10px;
+        gap: 12px;
+    }
+
+    .utbk-question-pane .question-text {
+        text-align: left;
+        overflow-wrap: break-word;
+        word-break: normal;
+        line-height: 1.48;
+        margin-bottom: 2px;
+    }
+
+    .utbk-question-pane .question-text .badge {
+        white-space: normal;
+        line-height: 1.25;
     }
 
     .utbk-question-pane .options-container.options-grid {
