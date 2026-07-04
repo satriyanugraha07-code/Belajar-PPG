@@ -643,7 +643,10 @@ const CHECKLIST_KEY = 'ayo_ppg_checklist_status';
 // APPLICATION INITIALIZATION
 // ==========================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAyoPpgApp() {
+    if (window.__ayoPpgAppInitialized) return;
+    window.__ayoPpgAppInitialized = true;
+
     // Setup Navigation Handlers
     initNavigation();
     
@@ -664,7 +667,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hash && ['home', 'kuis', 'soal-internet', 'tips'].includes(hash)) {
         navigateToSection(hash);
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAyoPpgApp, { once: true });
+} else {
+    initAyoPpgApp();
+}
 
 // ==========================================================================
 // THEME SWITCHER LOGIC
@@ -743,7 +752,10 @@ function closeMobileMenu() {
 }
 
 function navigateToSection(sectionId) {
-    if (activeSectionId === sectionId) {
+    const targetSection = document.getElementById(`${sectionId}-section`);
+    if (!targetSection) return;
+
+    if (activeSectionId === sectionId && targetSection.classList.contains('active-section')) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
     }
@@ -754,17 +766,12 @@ function navigateToSection(sectionId) {
         document.body.classList.remove('quiz-mode-active');
     }
 
-    // Hide active section
-    const currentSection = document.getElementById(`${activeSectionId}-section`);
-    if (currentSection) {
-        currentSection.classList.remove('active-section');
-    }
+    // Hide all sections first so hash/direct routing cannot leave stale active UI.
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active-section');
+    });
 
-    // Show new section
-    const targetSection = document.getElementById(`${sectionId}-section`);
-    if (targetSection) {
-        targetSection.classList.add('active-section');
-    }
+    targetSection.classList.add('active-section');
 
     // Update active nav state (Desktop)
     const navLinks = document.querySelectorAll('.nav-link');
@@ -1080,7 +1087,7 @@ function renderOptions(q) {
     const container = document.getElementById('options-container');
     container.innerHTML = '';
     
-    // Toggle grid class based on type (grid 2 kolom untuk pilihan ganda, table block lebar penuh untuk tabel)
+    // Toggle grid class based on type.
     if (q.type === 'table') {
         container.classList.remove('options-grid');
     } else {
@@ -1109,10 +1116,10 @@ function renderOptions(q) {
             container.appendChild(card);
         });
     } else if (q.type === 'table') {
-        // Render True/False Statements Table
+        // Render true/false statements as a compact table.
         const tableWrapper = document.createElement('div');
-        tableWrapper.className = 'utbk-table-wrapper';
-        
+        tableWrapper.className = 'utbk-question-table-wrapper';
+
         let rowsHtml = '';
         q.statements.forEach((stmt, sIdx) => {
             const isCheckedBenar = userAns[sIdx] === true ? 'checked' : '';
@@ -1120,17 +1127,16 @@ function renderOptions(q) {
             
             rowsHtml += `
                 <tr>
-                    <td><strong>${sIdx + 1}.</strong> ${stmt}</td>
-                    <td class="text-center">
+                    <td class="statement-number">${sIdx + 1}</td>
+                    <td class="statement-text">${stmt}</td>
+                    <td class="statement-choice-cell">
                         <label class="utbk-radio-label">
                             <input type="radio" name="stmt_${sIdx}" value="true" ${isCheckedBenar} onclick="setTableAnswer(${sIdx}, true)">
-                            <span>Benar</span>
                         </label>
                     </td>
-                    <td class="text-center">
+                    <td class="statement-choice-cell">
                         <label class="utbk-radio-label">
                             <input type="radio" name="stmt_${sIdx}" value="false" ${isCheckedSalah} onclick="setTableAnswer(${sIdx}, false)">
-                            <span>Salah</span>
                         </label>
                     </td>
                 </tr>
@@ -1140,11 +1146,14 @@ function renderOptions(q) {
         tableWrapper.innerHTML = `
             <table class="utbk-question-table">
                 <thead>
-                    <tr><th>Pernyataan</th><th style="width: 100px;">Benar</th><th style="width: 100px;">Salah</th></tr>
+                    <tr>
+                        <th>No</th>
+                        <th>Pernyataan</th>
+                        <th>Benar</th>
+                        <th>Salah</th>
+                    </tr>
                 </thead>
-                <tbody>
-                    ${rowsHtml}
-                </tbody>
+                <tbody>${rowsHtml}</tbody>
             </table>
         `;
         container.appendChild(tableWrapper);
@@ -1601,7 +1610,12 @@ function isLocalhost() {
 }
 
 function initLivePresence() {
-    connectToRealtimePresence();
+    if (window.AyoAnalytics) {
+        window.AyoAnalytics.connect();
+        return;
+    }
+
+    updateOnlineCountUI(1);
 }
 
 function connectToRealtimePresence() {

@@ -1,0 +1,25 @@
+{
+  "name": "ayoppg-vite",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n web,analytics -c cyan,magenta \"vite --host 127.0.0.1\" \"node server/analytics-server.mjs\"",
+    "dev:web": "vite --host 127.0.0.1",
+    "dev:server": "node server/analytics-server.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "node server/analytics-server.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "motion": "^12.42.2",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "vite": "^8.1.3"
+  }
+}
