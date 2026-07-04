@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: belajar-ppg
+    env: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DEV_TOKEN
+        value: tahubulat
+      - key: IP_SALT
+        generateValue: true
