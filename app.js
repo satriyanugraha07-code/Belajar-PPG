@@ -963,7 +963,7 @@ function startQuiz(category) {
     document.body.classList.add('quiz-mode-active');
 
     // Request full screen
-    if (document.documentElement.requestFullscreen) {
+    if (document.documentElement.requestFullscreen && window.innerWidth > 768) {
         document.documentElement.requestFullscreen().catch(err => {
             console.log("Gagal masuk mode fullscreen:", err);
         });
