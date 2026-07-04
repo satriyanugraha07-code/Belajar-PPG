@@ -1,13 +1,16 @@
 services:
   - type: web
     name: belajar-ppg
-    env: node
+    runtime: node
     plan: free
     buildCommand: npm ci && npm run build
     startCommand: npm start
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NODE_VERSION
+        value: 22.22.0
       - key: DEV_TOKEN
         value: tahubulat
       - key: IP_SALT
